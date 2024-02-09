@@ -27,6 +27,21 @@ class VehicleApiService{
     {
       throw Exception("Failed To Send Data");
     }
+  }
+  Future<List<Posts>> getPosts()async{
+    var client=http.Client();
+    var apiurl=Uri.parse("http://192.168.251.163:3001/api/vehicleapp/view");
+    var response=await client.get(apiurl);
+    if(response.statusCode==200)
+    {
+      return postsFromJson(response.body);
+    }
+    else
+    {
+      return [];
+    }
 
   }
-}
+
+  }
+
